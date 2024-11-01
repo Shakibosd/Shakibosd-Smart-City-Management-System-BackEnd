@@ -1,0 +1,4 @@
+smart_city_management_system/.env
+db.sqlite3
+__pycache__/
+.venv
