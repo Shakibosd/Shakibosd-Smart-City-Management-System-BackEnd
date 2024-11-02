@@ -74,7 +74,7 @@ class RegisterAPIView(APIView):
             print(token)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             print(uid)
-            confirm_link = f'http://127.0.0.1:8000/authentication/active/{uid}/{token}/'
+            confirm_link = f'https://smart-city-silk.vercel.app/authentication/active/{uid}/{token}/'
             email_subject = 'Confirm Your Email'
             email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
             email = EmailMultiAlternatives(email_subject, '', to=[user.email])
@@ -138,7 +138,7 @@ class PasswordResetRequestAPIView(APIView):
                 user = User.objects.get(email=serializer.validated_data['email'])
                 token = default_token_generator.make_token(user)
                 uid = urlsafe_base64_encode(force_bytes(user.pk)) 
-                reset_link = f'http://127.0.0.1:5500/reset_password_form.html?uid64={uid}&token={token}'
+                reset_link = f'https://smarts-city.netlify.app/reset_password_form.html?uid64={uid}&token={token}'
                 email_subject = 'Reset Your Password'
                 email_body = render_to_string('reset_password_email.html', {'reset_link': reset_link})
                 email = EmailMultiAlternatives(email_subject, '', to=[user.email])

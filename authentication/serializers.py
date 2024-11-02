@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .models import Profile
 import re
 
-
 class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source="user.username", read_only=False)
     email = serializers.EmailField(source="user.email", read_only=False)
