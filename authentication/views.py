@@ -137,7 +137,7 @@ class PasswordResetRequestAPIView(APIView):
             try:
                 user = User.objects.get(email=serializer.validated_data['email'])
                 token = default_token_generator.make_token(user)
-                uid = urlsafe_base64_encode(force_bytes(user.pk))  
+                uid = urlsafe_base64_encode(force_bytes(user.pk)) 
                 reset_link = f'http://127.0.0.1:5500/reset_password_form.html?uid64={uid}&token={token}'
                 email_subject = 'Reset Your Password'
                 email_body = render_to_string('reset_password_email.html', {'reset_link': reset_link})
@@ -166,3 +166,6 @@ class PasswordChangeAPIView(APIView):
                 return Response({'detail': 'Password has been changed successfully.'}, status=status.HTTP_200_OK)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error': 'Invalid token or user.'}, status=status.HTTP_400_BAD_REQUEST)
+    
+
+    
