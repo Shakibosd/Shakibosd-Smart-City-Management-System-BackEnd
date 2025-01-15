@@ -30,7 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app"]
 
-LOGIN_URL = "http://127.0.0.1:5500/login.html"
+CORS_ALLOWED_ORIGINS = [
+    "https://smart-city-silk.vercel.app",
+    "https://smarts-city.netlify.app",
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
